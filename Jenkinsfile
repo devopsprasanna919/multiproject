@@ -21,3 +21,5 @@ pipeline {
         }
     }
 }
+
+// pipeline startegy
