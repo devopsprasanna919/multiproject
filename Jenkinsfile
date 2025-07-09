@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage ('build') {
            environment {
-            course = aws
+            course = "aws"
            }
             steps {
                 echo ("registered for course ${aws}")
