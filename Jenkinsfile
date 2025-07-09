@@ -1,26 +1,17 @@
-
 pipeline {
     agent {
         label 'jenkinsslave'
     }
+    environment {
+        name = sudha
+        platform = devops
+    }
     stages {
-        stage ('build') {
+        stage (fisrst stage) {
             steps {
-                echo ('build from main branch')
+                echo "welcome ${name}"
+                echo "joined ${platform}"
             }
-        stage ('scam') {
-            steps {
-                echo ('scam from feature branch')
-            }
-        stage ('deploy') {
-            steps {
-                echo ('deploy from hotfix branch')
-            }
-        }
-        }
         }
     }
 }
-
-// feature
-
