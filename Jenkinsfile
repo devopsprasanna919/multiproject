@@ -10,7 +10,7 @@ pipeline {
         SONAR_CREDS = credentilals('sonar_creds')
     }
     stages {
-        stage (fisrst stage) {
+        stage('fisrst stage') {
             steps {
                 echo "welcome ${name}"
                 echo "you are enrolled to ${course}"
