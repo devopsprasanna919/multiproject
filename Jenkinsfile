@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'jenkinssslave'
+        label 'jenkinsslave'
     }
     environment {
         DEPLOY_TO = 'production'
