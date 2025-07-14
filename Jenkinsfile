@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('buildstage') {
             when {
-                expression { BRANCH_NAME ==~ /(main|release)/ }
+                expression { BRANCH_NAME ==~ /(main|feature)/ }
             }
             steps {
                 echo "expression pipeline"
