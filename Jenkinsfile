@@ -7,7 +7,7 @@ pipeline {
         name = "sudha"
         course = "aws"
         SONAR_URL = "sonar.hsbsc.com"
-        SONAR_CREDS = credentilals('sonar_creds')
+        SONAR_CREDS = credentials('sonar_creds')
     }
     stages {
         stage('fisrst stage') {
@@ -19,4 +19,3 @@ pipeline {
         }
     }
 }
-
