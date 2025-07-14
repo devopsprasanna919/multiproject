@@ -3,23 +3,19 @@ pipeline {
     agent {
         label 'jenkinsslave'
     }
+    environment {
+        name = "sudha"
+        course = "aws"
+        SONAR_URL = "sonar.hsbsc.com"
+        SONAR_TOKEN "12345678"
+    }
     stages {
-        stage ('build') {
+        stage (fisrst stage) {
             steps {
-                echo ('build from main branch')
+                echo "welcome ${name}"
+                echo "you are enrolled to ${course}"
+                echo "printing my token: ${SONAR_TOKEN}"
             }
-        stage ('scam') {
-            steps {
-                echo ('scam from feature branch')
-            }
-        stage ('deploy') {
-            steps {
-                echo ('deploy from hotfix branch')
-            }
-        }
-        }
         }
     }
 }
-
-// pipeline startegy
