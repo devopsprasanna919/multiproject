@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('buildstage') {
             when {
-                environmentname: 'TODAY_DAY', value: 'MONDAY'
+                environment name: 'TODAY_DAY', value: 'MONDAY'
             }
             steps {
                 echo " pipeline for when condition"
