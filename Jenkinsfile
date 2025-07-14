@@ -3,14 +3,14 @@ pipeline {
         label 'jenkinsslave'
     }
     environment {
-        name = sudha
-        platform = devops
+        name = "sudha"
+        platform = "aws"
     }
     stages {
         stage (fisrst stage) {
             steps {
                 echo "welcome ${name}"
-                echo "joined ${platform}"
+                echo "you are enrolled to ${platform}"
             }
         }
     }
