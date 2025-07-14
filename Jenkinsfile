@@ -1,5 +1,6 @@
 
-pipeline {
+
+    pipeline {
     agent {
         label 'jenkinsslave'
     }
@@ -8,17 +9,18 @@ pipeline {
     }
     stages {
         stage('deploytodev') {
-            steps {
-                echo "deplyng to dev environment"
-            }
-        }
-        stage('deploytoprod') {
             when {
                 allOf {
                     branch 'main'
                     environment name: 'DEPLOY_TO', value: 'production'
                 }
             }
+            steps {
+                echo "deplyng to dev environment"
+            }
+        }
+        stage('deploytoprod') {
+            
             steps {
                 echo "pipeline with allOf"
             }
