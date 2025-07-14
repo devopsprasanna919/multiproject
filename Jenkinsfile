@@ -4,17 +4,23 @@ pipeline {
         label 'jenkinsslave'
     }
     environment {
-        name = "sudha"
-        course = "aws"
-        SONAR_URL = "sonar.hsbsc.com"
-        SONAR_CREDS = credentials('sonar_creds')
+        DEPLOY_TO = 'production'
     }
     stages {
-        stage('fisrst stage') {
+        stage('deploytodev') {
             steps {
-                echo "welcome ${name}"
-                echo "you are enrolled to ${course}"
-                echo "printing my token: ${SONAR_CREDS}"
+                echo "deplyng to dev environment"
+            }
+        }
+        stage('deploytoprod') {
+            when {
+                allOf {
+                    branch 'main'
+                    environment name: 'DEPLOY_TO', value: 'production'
+                }
+            }
+            steps {
+                echo "pipeline with allOf"
             }
         }
     }
