@@ -4,18 +4,17 @@ pipeline {
         label 'jenkinsslave'
     }
     environment {
-        name = "sudha"
-        course = "aws"
-        SONAR_URL = "sonar.hsbsc.com"
-        SONAR_TOKEN "12345678"
+        TODAY_DAY = 'MONDAY'
     }
     stages {
-        stage (fisrst stage) {
-            steps {
-                echo "welcome ${name}"
-                echo "you are enrolled to ${course}"
-                echo "printing my token: ${SONAR_TOKEN}"
+        stage('buildstage') {
+            when {
+                environmentname: 'TODAY_DAY', value: 'MONDAY'
             }
+            steps {
+                echo " pipeline for when condition"
+            }
+
         }
     }
 }
