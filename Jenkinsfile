@@ -2,36 +2,19 @@ pipeline {
     agent {
         label 'jenkinsslave'
     }
+    parameters {
+        string(name: 'APPLICATION_NAME', description: 'my application', defaultvalue: 'abc')
+        booleanparam(name: 'RUN_TEST', description: 'to run my application', defaultvalue: 'true')
+        choice(name: 'ENV', description: 'to deploy to which environment ?', choices: ['dev','test','prod'])
+        password(name: 'PASSWORD', description: 'to enter passsword', defaultvalue: 'secret')
+    }
     stages {
-        stage('build') {
+        stage ('buildparameters') {
             steps {
-                echo "***deploying to build"
-            }
-        }
-        stage('dockerbuild') {
-            steps {
-                echo "***deploying to docker build"
-            }
-        }
-        stage('sonarbuild') {
-            steps {
-                echo "deploying to sonar"
-            }
-        }
-        stage('devstage') {
-            when {
-                branch 'main*'
-            }
-            steps {
-                echo "deploying to stageenvironment"   
-            }
-        }
-        stage('production') {
-            when {
-                tag pattern: "v\\d{1,2}.d{1,2}.d{1,2}", comparator: "REGEXP"
-            }
-            steps {
-                echo "deploying to production environment"
+                echo "my application name: ${params.APPLICATION_NAME}"
+                echo "are you running test: ${params.RUN_TEST}"
+                echo "which environment deploying: ${params.ENV}"
+                echo "entered password is: ${params.PASSWORD}"
             }
         }
     }
