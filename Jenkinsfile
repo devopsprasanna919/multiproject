@@ -3,10 +3,10 @@ pipeline {
         label 'jenkinsslave'
     }
     parameters {
-        string(name: 'APPLICATION_NAME', description: 'my application', defaultvalue: 'i27app')
-        booleanparam(name: 'RUN_TEST', description: 'to run my application', defaultvalue: true)
+        string(name: 'APPLICATION_NAME', description: 'my application', defaultValue: 'i27app')
+        booleanparam(name: 'RUN_TEST', description: 'to run my application', defaultValue: true)
         choice(name: 'ENV', description: 'to deploy to which environment ?', choices: ['dev','test','prod'])
-        password(name: 'PASSWORD', description: 'to enter passsword', defaultvalue: 'SECRET')
+        password(name: 'PASSWORD', description: 'to enter passsword', defaultValue: 'SECRET')
     }
     stages {
         stage ('buildparameters') {
