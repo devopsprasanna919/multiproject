@@ -12,7 +12,7 @@ pipeline {
         stage ('buildparameters') {
             steps {
                 echo "my application name: ${params.APPLICATION_NAME}"
-                //echo "are you running test: ${params.RUN_TEST}"
+                echo "are you running test: ${params.RUN_TEST}"
                 echo "which environment deploying: ${params.ENV}"
                 echo "entered password is: ${params.PASSWORD}"
             }
