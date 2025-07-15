@@ -18,11 +18,13 @@ pipeline {
                 echo "deploying to sonar"
             }
         }
-        stage('stage') {
+        stage('devstage') {
             when {
                 branch 'main*'
             }
-            echo "deploying to stageenvironment"
+            steps {
+                echo "deploying to stageenvironment"   
+            }
         }
         stage('production') {
             when {
