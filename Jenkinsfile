@@ -4,7 +4,7 @@ pipeline {
     }
     parameters {
         string(name: 'APPLICATION_NAME', description: 'my application', defaultValue: 'i27app')
-        booleanparam(name: 'RUN_TESTS', description: 'would you like to run tests ?', defaultValue: true)
+        booleanParam(name: 'RUN_TESTS', description: 'would you like to run tests ?', defaultValue: true)
         choice(name: 'ENV', description: 'to which environment deploying ?', choices: ['dev','test','prod'])
         password(name: 'PASSWORD', description: 'to enter passsword', defaultValue: 'SECRET')
     }
