@@ -2,29 +2,34 @@ pipeline {
     agent {
         label 'jenkinsslave'
     }
-    environment {
-        DEPLOY_TO = 'production'
-    }
     stages {
-        stage('deploytoprod') {
+        stage('build') {
             steps {
-                echo "deploying to production"
+                echo "***deploying to build"
             }
         }
-        stage('deploytostage') {
+        stage('dockerbuild') {
             steps {
-                echo "deploying to stage environment"
+                echo "***deploying to docker build"
             }
         }
-        stage(deploytodev) {
+        stage('sonarbuild') {
+            steps {
+                echo "deploying to sonar"
+            }
+        }
+        stage('stage') {
             when {
-                anyOf {
-                    branch 'release'
-                    environment name: 'DEPLOY_TO', value: 'production'
-                }
+                branch 'main*'
+            }
+            echo "deploying to stageenvironment"
+        }
+        stage('production') {
+            when {
+                tagpattern: "v\\d{1,2}.d{1,2}.d{1,2}", comparator: "REGEXP"
             }
             steps {
-                echo "deploying to dev"
+                echo "deploying to production environment"
             }
         }
     }
